@@ -5,14 +5,16 @@
 **a. Initial design**
 
 - Briefly describe your initial UML design.
-ANSWER: My initial UML design centered on four classes: Owner, Pet, Task, and Scheduler. The classes were connected so that an Owner owns a Pet and holds a list of Task objects, which the Scheduler uses to produce a daily plan.
+ANSWER: My initial UML design centered on a pet care app with four classes: Owner, Pet, Task, and Scheduler. The model connected them so one Owner has one Pet and a list of Task objects, while Scheduler consumes the owner's time budget and tasks to produce a daily care plan.
 - What classes did you include, and what responsibilities did you assign to each?
-ANSWER: Owner holds the user's name and available time for the day. Pet stores the pet's name, species, and age. Task represents a care activity with a duration, priority, and category. Scheduler takes the owner's time budget and the task list, ranks tasks by priority, and generates a plan that fits within the available time.
+ANSWER: Owner stores the user's name, available time, and task list. Pet stores identity and profile fields (name, species, age) used for care context. Task represents each care activity with duration, priority, and category metadata. Scheduler is responsible for ranking tasks and generating a feasible plan that stays within available time.
 
 **b. Design changes**
 
 - Did your design change during implementation?
+ANSWER: Yes. After asking Copilot to review #file:pawpal_system.py for missing relationships and logic bottlenecks, I made targeted design changes.
 - If yes, describe at least one change and why you made it.
+ANSWER: I updated the design to make the Owner-to-Pet relationship explicit in the class model, since the skeleton code currently tracks tasks under Owner but does not directly store a pet reference. I also refined Scheduler ranking rules to include tie-breaking (for example, favoring shorter tasks when priorities match) because the current greedy priority-first approach can create less efficient daily plans. These changes improve model clarity and reduce scheduling bottlenecks without making the system much more complex.
 
 ---
 
