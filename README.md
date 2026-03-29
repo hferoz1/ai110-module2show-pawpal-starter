@@ -22,6 +22,15 @@ Your final app should:
 - Display the plan clearly (and ideally explain the reasoning)
 - Include tests for the most important scheduling behaviors
 
+## Smarter Scheduling
+
+The `Scheduler` class goes beyond a simple to-do list with several algorithmic features:
+
+- **Priority-ranked daily plan** — `generate_plan` greedily selects pending tasks from highest to lowest priority, fitting as many as possible within the owner's available time budget.
+- **Conflict detection** — `detect_conflicts` converts each task's start time and duration into a minutes-since-midnight window and flags any two tasks on the same date whose windows overlap.
+- **Recurring task rollover** — `mark_task_complete` automatically creates the next occurrence of a `daily` or `weekly` task with the correct future due date, so the schedule stays populated without manual re-entry.
+- **Flexible filtering** — `filter_tasks` lets callers slice tasks by completion status, pet name, or both, enabling targeted views (e.g. "pending tasks for Buddy only").
+
 ## Getting started
 
 ### Setup
