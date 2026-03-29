@@ -2,6 +2,22 @@
 
 You are building **PawPal+**, a Streamlit app that helps a pet owner plan care tasks for their pet.
 
+## Features
+
+PawPal+ includes a scheduler that supports practical planning algorithms for day-to-day pet care:
+
+- **Priority-based planning**: Builds a daily plan by ranking pending tasks from highest to lowest priority.
+- **Sorting by time**: Orders tasks chronologically by `start_time` for timeline-style views.
+- **Time-budget constraints**: Only schedules tasks that fit within the owner's available minutes.
+- **Conflict warnings**: Detects overlaps and duplicate start-time collisions on the same date.
+- **Daily and weekly recurrence**: Completing recurring tasks automatically creates the next due instance.
+- **Smart task filtering**: Filters by completion status, pet name, and category for focused views.
+- **Multi-pet aggregation**: Collects tasks across all pets under one owner for unified scheduling.
+
+## 📸 Demo
+
+<a href="/course_images/ai110/StreamlitAppScreenshot.png" target="_blank"><img src='/course_images/ai110/StreamlitAppScreenshot.png' title='PawPal App' width='' alt='PawPal App' class='center-block' /></a>
+
 ## Scenario
 
 A busy pet owner needs help staying consistent with pet care. They want an assistant that can:
@@ -50,3 +66,30 @@ pip install -r requirements.txt
 5. Add tests to verify key behaviors.
 6. Connect your logic to the Streamlit UI in `app.py`.
 7. Refine UML so it matches what you actually built.
+
+## Testing PawPal+
+
+Run the test suite with:
+
+```bash
+python -m pytest
+```
+
+Current test coverage includes core scheduler behavior and edge cases, including:
+
+- Task completion state updates.
+- Adding tasks to pets.
+- Priority sorting correctness.
+- Chronological sorting correctness by start time.
+- Daily plan generation within owner time constraints.
+- Empty-plan behavior when no tasks are available.
+- Excluding completed tasks from planning.
+- Recurrence rollover for daily and weekly tasks.
+- Non-recurrence behavior for one-time tasks.
+- Conflict detection for overlapping and duplicate-time tasks.
+- No-conflict behavior for adjacent tasks.
+- Skipping unscheduled tasks in conflict checks.
+
+Test status: `15 passed`.
+
+Confidence Level: `★★★★★` (5/5)

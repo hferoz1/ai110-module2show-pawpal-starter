@@ -183,8 +183,14 @@ class Scheduler:
         return sorted(tasks, key=lambda t: t.priority, reverse=True)
 
     def sort_by_time(self, tasks):
-        """Sort tasks by their time attribute in HH:MM format."""
-        return sorted(tasks, key=lambda t: t.duration)
+        """Sort tasks chronologically by start_time, placing unscheduled tasks last."""
+        return sorted(
+            tasks,
+            key=lambda t: (
+                t.start_time is None,
+                t.start_time.hour * 60 + t.start_time.minute if t.start_time else 0,
+            ),
+        )
 
     # --- planning ---
 
