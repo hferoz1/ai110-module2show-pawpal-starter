@@ -5,7 +5,9 @@
 **a. Initial design**
 
 - Briefly describe your initial UML design.
+ANSWER: My initial UML design centered on four classes: Owner, Pet, Task, and Scheduler. The classes were connected so that an Owner owns a Pet and holds a list of Task objects, which the Scheduler uses to produce a daily plan.
 - What classes did you include, and what responsibilities did you assign to each?
+ANSWER: Owner holds the user's name and available time for the day. Pet stores the pet's name, species, and age. Task represents a care activity with a duration, priority, and category. Scheduler takes the owner's time budget and the task list, ranks tasks by priority, and generates a plan that fits within the available time.
 
 **b. Design changes**
 
